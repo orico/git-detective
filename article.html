@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measuring AI Agent Adoption in R&D Organizations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #ffffff;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        code {
+            background-color: #f6f8fa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Measuring AI Agent Adoption in R&D Organizations: A Data-Driven Approach</h1>
+    
+    <p style="font-size: 1.1em; margin-bottom: 30px;">
+        This article describes Git Detective, an open-source tool for measuring AI adoption in development teams. Source code: <a href="https://github.com/orico/git-detective" target="_blank">github.com/orico/git-detective</a>
+    </p>
+
+    <h2>The Challenge for Technical Leaders</h2>
+    <p>
+        As a technical leader in an R&D organization, you're likely facing a critical challenge in today's rapidly evolving
+        development landscape: How do you effectively measure and track the adoption of AI coding agents within your
+        organization? With tools like GitHub Copilot, Claude, and GPT becoming increasingly prevalent in development
+        workflows, understanding their impact and adoption rate is crucial for making informed decisions about your
+        organization's technical strategy.
+    </p>
+
+    <div class="highlight">
+        <h2>The Need for Measurement</h2>
+        <p>
+            Consider this scenario: You're a VP of R&D or a technical director who has invested in AI coding tools for your
+            team. You believe in the potential of these tools to:
+        </p>
+        <ul>
+            <li>Accelerate development velocity</li>
+            <li>Reduce time spent on boilerplate code</li>
+            <li>Enable developers to focus on higher-value tasks</li>
+            <li>Maintain consistency across the codebase</li>
+        </ul>
+        <p>
+            But how do you know if your team is actually leveraging these tools? How do you measure the return on
+            investment? This is where data-driven insights become invaluable.
+        </p>
+    </div>
+
+    <h2>The AI Contribution Pattern Hypothesis</h2>
+    <p>
+        One of the key observations in AI-assisted development is the pattern of code contributions. AI agents tend to
+        generate larger, more comprehensive code blocks in a single iteration, while human developers typically make
+        smaller, more incremental changes. This creates a distinctive pattern that can be analyzed:
+    </p>
+    <ul>
+        <li><strong>AI-Generated Commits:</strong> Typically larger, containing complete implementations or significant
+            refactoring</li>
+        <li><strong>Manual Commits:</strong> Usually smaller, focused on specific fixes, tweaks, or incremental
+            improvements</li>
+    </ul>
+
+    <h2>Introducing Git Detective: A Tool for Measuring AI Adoption</h2>
+    <p>
+        Git Detective is a specialized tool designed to help technical leaders monitor and measure AI agent adoption
+        within their organizations. It works by analyzing repository commit patterns and providing insights into how
+        code is being written and committed.
+    </p>
+
+    <div class="highlight">
+        <h2>How It Works</h2>
+        <p>
+            The tool performs sophisticated analysis by:
+        </p>
+        <ol>
+            <li>Analyzing commit sizes and patterns across repositories</li>
+            <li>Identifying statistical outliers in commit sizes</li>
+            <li>Using interquartile range (IQR) analysis to classify contributions</li>
+            <li>Generating reports that show the proportion of likely AI-generated code</li>
+        </ol>
+    </div>
+
+    <h2>Key Performance Indicators (KPIs) for Technical Leaders</h2>
+    <p>
+        With Git Detective, technical leaders can track several important metrics:
+    </p>
+    <ul>
+        <li><strong>AI Adoption Rate:</strong> Percentage of commits classified as likely AI-generated</li>
+        <li><strong>Adoption Trends:</strong> Growth in AI-assisted development over time</li>
+        <li><strong>Team Utilization:</strong> Which teams are leveraging AI tools most effectively</li>
+        <li><strong>Impact Analysis:</strong> Correlation between AI usage and development velocity</li>
+    </ul>
+
+    <h2>Try It Yourself</h2>
+    <p>
+        The code for Git Detective is available in this repository: <a href="https://github.com/orico/git-detective" target="_blank">https://github.com/orico/git-detective</a>. You can run it easily with a single command:
+    </p>
+    <pre><code>python analyze_repo.py git@github.com:orico/agent-annotation-team.git</code></pre>
+    
+    <h2>Example Output</h2>
+    <p>
+        Here's an actual output from analyzing a repository, showing how the tool classifies different commits:
+    </p>
+    <pre><code>+------------+---------------------------+-----------------+------------+---------------+---------------------+
+| Commit     | Date                      |   Lines Changed | % Change   |   Total Lines | Contribution Type   |
++============+===========================+=================+============+===============+=====================+
+| 3eb8a37d0e | 2025-03-29 06:03:08 +0300 |            1515 | N/A        |          1515 | Likely AI           |
+| d19be46e0d | 2025-03-29 06:05:08 +0300 |              16 | 1.06%      |          1515 | Likely Human        |
+| 53eb35e125 | 2025-03-29 07:29:38 +0300 |             176 | 11.62%     |          1547 | Possible AI         |
+| ad71f2f402 | 2025-03-29 07:42:13 +0300 |            1104 | 71.36%     |          1701 | Likely AI           |
+| 9333a02e02 | 2025-07-24 14:03:10 +0300 |            1125 | 66.14%     |          2714 | Likely AI           |
+| 521b40141d | 2025-07-24 14:04:46 +0300 |              90 | 3.32%      |          2628 | Likely Human        |
+| 2b0fb09ce8 | 2025-07-26 07:28:50 +0300 |            2812 | 95.58%     |          5002 | Likely AI           |</code></pre>
+
+    <p>
+        The tool also provides detailed statistical analysis of the repository:
+    </p>
+    <pre><code>
+Changes per commit (mean)        422.44
+Changes per commit (median)      93.50
+Changes standard deviation       750.84
+Percentage change (mean)         16.27%
+Percentage change (std)          29.94%
+    </code></pre>
+
+    <h2>Understanding the Results</h2>
+    <p>
+        Let's analyze what these numbers tell us about AI adoption in this repository:
+    </p>
+
+    <h3>Commit Size Patterns</h3>
+    <ul>
+        <li><strong>Large AI Commits:</strong> Several commits show significant changes (1515, 1104, 1125, and 2812 lines), 
+            all classified as "Likely AI". These large commits typically represent complete feature implementations or major refactoring.</li>
+        <li><strong>Human-Scale Changes:</strong> Most commits labeled as "Likely Human" range from 16 to 127 lines, 
+            showing the typical incremental development pattern of human developers.</li>
+        <li><strong>Clear Distinction:</strong> The size difference between AI and human commits is substantial - AI commits 
+            are often 10-20 times larger than typical human commits.</li>
+    </ul>
+
+    <h3>Statistical Insights</h3>
+    <ul>
+        <li><strong>Size Distribution:</strong> The large gap between mean (422.44) and median (93.50) lines per commit 
+            indicates that while most changes are relatively small, the occasional very large (AI) commits significantly 
+            impact the average.</li>
+        <li><strong>Normal Human Range:</strong> The commit data suggests that typical human commits modify between 1-5% of the codebase, 
+            with most changes being incremental improvements.</li>
+        <li><strong>AI Impact:</strong> The high standard deviation (750.84 lines) reflects the bi-modal nature of the 
+            changes - smaller human commits mixed with much larger AI-generated contributions.</li>
+    </ul>
+
+    <h3>Key Findings</h3>
+    <ul>
+        <li><strong>AI Adoption Pattern:</strong> The repository shows a healthy mix of AI and human contributions, with AI 
+            being used primarily for larger, more complex changes.</li>
+        <li><strong>Workflow Integration:</strong> The pattern suggests developers are effectively using AI for major 
+            implementations while maintaining human oversight through smaller refinements and adjustments.</li>
+        <li><strong>Development Velocity:</strong> Large AI commits (>1000 lines) are followed by series of smaller human 
+            commits (16-127 lines), indicating a pattern of AI-assisted rapid development followed by human refinement.</li>
+    </ul>
+
+    <h2>Making Data-Driven Decisions</h2>
+    <p>
+        With these insights, technical leaders can:
+    </p>
+    <ul>
+        <li>Identify teams that might need additional training or support with AI tools</li>
+        <li>Measure the effectiveness of AI tool adoption initiatives</li>
+        <li>Make informed decisions about investing in AI development tools</li>
+        <li>Track the ROI of AI coding assistant subscriptions</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+        As organizations continue to adopt AI coding agents, having concrete metrics to measure their impact becomes
+        increasingly important. Git Detective provides technical leaders with the insights they need to understand how
+        their teams are leveraging AI tools and make data-driven decisions about their development processes.
+    </p>
+    <p>
+        By monitoring these KPIs, leaders can ensure their organizations are effectively utilizing AI agents while
+        maintaining code quality and development best practices. This data-driven approach to measuring AI adoption
+        helps organizations optimize their development processes and maximize the return on their investment in AI
+        tools.
+    </p>
+</body>
+</html>
